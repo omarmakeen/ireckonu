@@ -1,0 +1,41 @@
+<div>
+    <p>search works!</p>
+    <app-search-bar (searchText)='getSearchText($event)'></app-search-bar>
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="photo">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">  <img [src]="element.photo"></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="localid">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Local ID</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.localid}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.first_name + ' ' + element.last_name | personalTitle: element.gender}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.phone}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="modified">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Modified</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.modified | date:'yyyy-MM-dd'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="view">
+            <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+            <mat-cell *matCellDef="let element"><span>></span></mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>
