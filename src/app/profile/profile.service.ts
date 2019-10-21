@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ProfileService {
 
+  profiles = [];
+  currentProfile: any;
   constructor(private httpClient: HttpClient) { }
 
   getProfiles() {

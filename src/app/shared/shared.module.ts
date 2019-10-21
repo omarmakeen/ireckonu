@@ -11,7 +11,7 @@ import { PersonalTitlePipe } from './pipes/personal-title/personal-title.pipe';
 import { NotificationMessageComponent } from './components/notification-message/notification-message.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import { TranslateModule } from '@ngx-translate/core';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatTabsModule, MatIconModule } from '@angular/material';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 
 
@@ -26,6 +26,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTabsModule,
+    MatIconModule,
     TranslateModule.forChild()
   ],
   exports: [
@@ -39,6 +41,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTabsModule,
+    MatIconModule,
     TranslateModule 
   ],
   entryComponents: [ErrorDialogComponent]

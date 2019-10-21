@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TranslateService } from '@ngx-translate/core';
 import { ProfileService } from '../profile.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  constructor(private httpClient: HttpClient, private profileService: ProfileService) { }
+  constructor(private httpClient: HttpClient, private profileService: ProfileService, private router: Router) { }
 
   ngOnInit() {
     this.getProfiles();
@@ -72,6 +73,11 @@ export class SearchComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openProfile(profile: any) {
+    this.profileService.currentProfile = profile;
+    this.router.navigate(['/profile/details']);
   }
 
 }

@@ -1,9 +1,10 @@
 <div>
-    <app-search-bar (searchText)='getSearchText($event)'></app-search-bar>
-    <mat-table [dataSource]="dataSource" matSort matSortActive="localid" matSortDirection="asc" matSortDisableClear *ngIf="dataSource.data.length > 0">
+    <app-search-bar class="search-position" (searchText)='getSearchText($event)'></app-search-bar>
+    <mat-table class='mat-table' [dataSource]="dataSource" matSort matSortActive="localid" matSortDirection="asc"
+        matSortDisableClear *ngIf="dataSource.data.length > 0">
         <ng-container matColumnDef="photo">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let element">  <img [src]="element.photo"></mat-cell>
+            <mat-cell *matCellDef="let element"> <img [src]="element.photo"></mat-cell>
         </ng-container>
         <ng-container matColumnDef="localid">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Local ID</mat-header-cell>
@@ -15,7 +16,8 @@
         </ng-container>
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.first_name + ' ' + element.last_name | personalTitle: element.gender}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.first_name + ' ' + element.last_name | personalTitle: element.gender}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="phone">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</mat-header-cell>
@@ -34,15 +36,15 @@
             <mat-cell *matCellDef="let element"><span>></span></mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+        <mat-row *matRowDef="let row; columns: tableColumns" (click)=openProfile(row)></mat-row>
     </mat-table>
-    <app-notification-message [message]="'search.noData' | translate" *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message>
-    <mat-paginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons *ngIf="dataSource.data.length > 0"></mat-paginator>
+    <app-notification-message [message]="'search.noData' | translate"
+        *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message>
+    <mat-paginator class="table-pagination" [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons
+        *ngIf="dataSource.data.length > 0"></mat-paginator>
     <!-- <app-notification-message *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message> -->
-    <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
-  <mat-progress-spinner 
-    color="primary" 
-    mode="indeterminate">
-  </mat-progress-spinner>
-</mat-card>
+    <mat-card *ngIf="isLoading" class="spinner" style="display: flex; justify-content: center; align-items: center">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+    </mat-card>
 </div>
