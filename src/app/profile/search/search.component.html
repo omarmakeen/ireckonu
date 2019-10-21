@@ -43,8 +43,8 @@
     <mat-paginator class="table-pagination" [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons
         *ngIf="dataSource.data.length > 0"></mat-paginator>
     <!-- <app-notification-message *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message> -->
-    <mat-card *ngIf="isLoading" class="spinner" style="display: flex; justify-content: center; align-items: center">
+    <!-- <mat-card *ngIf="isLoading" class="spinner" style="display: flex; justify-content: center; align-items: center">
         <mat-progress-spinner color="primary" mode="indeterminate">
         </mat-progress-spinner>
-    </mat-card>
+    </mat-card> -->
 </div>

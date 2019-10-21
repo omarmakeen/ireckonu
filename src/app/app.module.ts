@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { HttpConfigInterceptor } from './shared/services/interceptors/httpconfig-interceptor.service';
 import { ErrorDialogService } from './shared/components/error-dialog/error-dialog.service';
 import { ErrorDialogComponent } from './shared/components/error-dialog/error-dialog.component';
+import { SpinnerService } from './shared/components/spinner/spinner.service';
 
 export function configLoaderFactory(config: ConfigLoaderService) {
   return () => config.load();
@@ -44,7 +45,7 @@ export function createTranslateLoader(http: HttpClient, configLoaderService: Con
       }
     })
   ],
-  providers: [ConfigLoaderService, ErrorDialogService,
+  providers: [ConfigLoaderService, ErrorDialogService, SpinnerService,
     {
       provide: APP_INITIALIZER,
       useFactory: configLoaderFactory,

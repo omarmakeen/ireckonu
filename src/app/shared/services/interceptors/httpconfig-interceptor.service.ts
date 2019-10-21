@@ -10,11 +10,16 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ErrorDialogService } from '../../components/error-dialog/error-dialog.service';
+import { SpinnerService } from '../../components/spinner/spinner.service';
+import { finalize } from "rxjs/operators";
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    constructor(public errorDialogService: ErrorDialogService) { }
+    constructor(public errorDialogService: ErrorDialogService, public spinnerService: SpinnerService) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        this.spinnerService.show();
+
         const token: string = localStorage.getItem('token');
 
         if (token) {
@@ -29,9 +34,11 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {
+
+                
+
                 if (event instanceof HttpResponse) {
                     console.log('event--->>>', event);
-                    // this.errorDialogService.openDialog(event);
                 }
                 return event;
             }),
@@ -43,6 +50,6 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 };
                 this.errorDialogService.openDialog(data);
                 return throwError(error);
-            }));
+            }),finalize(() => this.spinnerService.hide()));
     }
 }

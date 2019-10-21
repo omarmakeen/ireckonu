@@ -13,10 +13,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialogModule, MatTabsModule, MatIconModule } from '@angular/material';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, SearchBarComponent, PersonalTitlePipe, NotificationMessageComponent, ErrorDialogComponent],
+  declarations: [HeaderComponent, SearchBarComponent, PersonalTitlePipe, NotificationMessageComponent, ErrorDialogComponent, SpinnerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,6 +33,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
   ],
   exports: [
     HeaderComponent,
+    SpinnerComponent,
     SearchBarComponent,
     NotificationMessageComponent,
     PersonalTitlePipe,
