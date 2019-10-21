@@ -9,6 +9,8 @@ import { MatSort } from '@angular/material/sort';
 import { TranslateService } from '@ngx-translate/core';
 import { ProfileService } from '../profile.service';
 import { Router } from '@angular/router';
+import { PAGE_SIZE_OPTIONS, PROFILE_TABLE_COLUMN } from 'src/app/shared/constants/defines';
+import { config } from 'src/config/pages-config';
 
 
 @Component({
@@ -21,9 +23,10 @@ export class SearchComponent implements OnInit {
   private profiles: any;
   private dataSource = new MatTableDataSource<any>([]);
   private isLoading: boolean;
-  private tableColumns: string[] = ['photo', 'localid', 'email', 'name', 'phone', 'address', 'modified', 'view']
+  private tableColumns: string[] = PROFILE_TABLE_COLUMN
   private paginator: MatPaginator;
   private sort: MatSort;
+  pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
     this.sort = ms;
@@ -77,7 +80,7 @@ export class SearchComponent implements OnInit {
 
   openProfile(profile: any) {
     this.profileService.currentProfile = profile;
-    this.router.navigate(['/profile/details']);
+    this.router.navigate([config.profile.details.route]);
   }
 
 }

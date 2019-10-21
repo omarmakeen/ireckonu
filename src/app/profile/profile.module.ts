@@ -9,10 +9,11 @@ import { ProfileService } from './profile.service';
 import { DetailsTabComponent } from './details/details-tab/details-tab.component';
 import { ProfileIdTabComponent } from './details/profile-id-tab/profile-id-tab.component';
 import { ActivityTimelineTabComponent } from './details/activity-timeline-tab/activity-timeline-tab.component';
+import { QuickFactsComponent } from './details/quick-facts/quick-facts.component';
 
 
 @NgModule({
-  declarations: [SearchComponent, DetailsComponent, DetailsTabComponent, ProfileIdTabComponent, ActivityTimelineTabComponent],
+  declarations: [SearchComponent, DetailsComponent, DetailsTabComponent, ProfileIdTabComponent, ActivityTimelineTabComponent, QuickFactsComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

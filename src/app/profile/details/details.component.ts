@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { ProfileService } from '../profile.service';
+import { config } from 'src/config/pages-config';
 
 @Component({
   selector: 'app-details',
@@ -18,7 +19,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.profile = this.profileService.currentProfile;
     if (!this.profile)
-      this.router.navigate(['/profile']);
+      this.router.navigate([config.profile.route]);
   }
 
 }

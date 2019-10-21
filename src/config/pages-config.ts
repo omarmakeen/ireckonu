@@ -16,6 +16,12 @@ export const config = {
     profile: {
         name: 'profile',
         route: '/profile',
-        titleKey: 'Profiles'
+        titleKey: 'Profiles',
+
+        details: {
+            name: 'profile-details',
+            route: '/profile/details',
+            titleKey: 'Profile Details'
+        }
     }
 }

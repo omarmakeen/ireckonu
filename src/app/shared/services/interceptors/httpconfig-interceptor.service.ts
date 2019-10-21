@@ -35,7 +35,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {
 
-                
+
 
                 if (event instanceof HttpResponse) {
                     console.log('event--->>>', event);
@@ -50,6 +50,6 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 };
                 this.errorDialogService.openDialog(data);
                 return throwError(error);
-            }),finalize(() => this.spinnerService.hide()));
+            }), finalize(() => this.spinnerService.hide()));
     }
 }

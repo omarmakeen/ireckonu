@@ -1,6 +1,17 @@
 {
-    "search": {
-        "noData": "No Profile Found",
-        "text": "This is a simple demonstration app for ngx-translate"
+    "searchPage": {
+        "tableHeader":{
+            "id": "Local ID",
+            "email": "Email Address",
+            "name": "Name",
+            "phone": "Phone Number",
+            "address": "Address",
+            "modified": "Modified",
+            "view": "View"
+        },
+        "notification": {
+            "message": "No profile found"
+        }
     }
+    
 }
