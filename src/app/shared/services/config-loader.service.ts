@@ -127,10 +127,10 @@ export class ConfigLoaderService {
     // public getErrorsConfig () {
     //     return this.errors;
     // }
-    public getDefaultGermanWordingFile () {
+    public getDefaultWordingFile () {
         return of(this.defaultWordingfile);
     }
-    public getDeWordingFile () {
+    public getEnWordingFile () {
         return of(this.deWordingfile);
     }
     // public setCoreConfigRoute (): void {

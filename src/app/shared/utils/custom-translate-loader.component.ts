@@ -17,7 +17,7 @@ export class CustomTranslateLoader extends TranslateHttpLoader {
         if (lang === WORDING_FILES.defaultWording) {
             return this.config.getDefaultWordingFile();
         } else if (lang === WORDING_FILES.deWording) {
-            return this.config.getDeWordingFile();
+            return this.config.getEnWordingFile();
         }
     }
 

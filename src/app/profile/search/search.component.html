@@ -1,7 +1,6 @@
 <div>
-    <p>search works!</p>
     <app-search-bar (searchText)='getSearchText($event)'></app-search-bar>
-    <mat-table [dataSource]="dataSource" matSort>
+    <mat-table [dataSource]="dataSource" matSort matSortActive="localid" matSortDirection="asc" matSortDisableClear *ngIf="dataSource.data.length > 0">
         <ng-container matColumnDef="photo">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">  <img [src]="element.photo"></mat-cell>
@@ -37,5 +36,13 @@
         <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
     </mat-table>
-    <mat-paginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+    <app-notification-message [message]="'search.noData' | translate" *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message>
+    <mat-paginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons *ngIf="dataSource.data.length > 0"></mat-paginator>
+    <!-- <app-notification-message *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message> -->
+    <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+  <mat-progress-spinner 
+    color="primary" 
+    mode="indeterminate">
+  </mat-progress-spinner>
+</mat-card>
 </div>
