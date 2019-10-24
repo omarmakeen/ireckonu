@@ -46,7 +46,7 @@ Applying lazy loading—a design pattern that loads NgModules as needed. Lazy lo
 **routes-config** --> contains all API end point name.
 
 ### Configuration
- **pages-config.ts --> contains all pages configuration like routes, pages title and etc.
+ **pages-config.ts** --> contains all pages configuration like routes, pages title and etc.
  
  ### Asset
  **i18n/en.json** --> contains all static language for the whole SPA.
