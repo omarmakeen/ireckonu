@@ -8,10 +8,10 @@ export class ConfigLoaderService {
 
     public defaultWordingfile: any;
     public enWordingfile: any;
-    public constructor (private injector: Injector) {
+    public constructor(private injector: Injector) {
     }
 
-    public load (): Promise<any> {
+    public load(): Promise<any> {
 
         const defaultWording = new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -47,10 +47,10 @@ export class ConfigLoaderService {
         return Promise.all([defaultWording, enWording]);
     }
 
-    public getDefaultWordingFile () {
+    public getDefaultWordingFile() {
         return of(this.defaultWordingfile);
     }
-    public getEnWordingFile () {
+    public getEnWordingFile() {
         return of(this.enWordingfile);
     }
 }

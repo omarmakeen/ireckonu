@@ -39,7 +39,7 @@
         <mat-row *matRowDef="let row; columns: tableColumns" (click)=openProfile(row)></mat-row>
     </mat-table>
     <app-notification-message class="notification" [message]="'searchPage.notification.message' | translate"
-        *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message>
+        *ngIf="dataSource.filteredData.length === 0 && !spinnerService.isLoading | async"></app-notification-message>
     <mat-paginator class="table-pagination" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
         *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length > 0"></mat-paginator>
     <!-- <app-notification-message *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message> -->

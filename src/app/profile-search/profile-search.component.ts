@@ -11,6 +11,7 @@ import { ProfileService } from './profile.service';
 import { Router } from '@angular/router';
 import { PAGE_SIZE_OPTIONS, PROFILE_TABLE_COLUMN } from 'src/app/shared/constants/defines';
 import { config } from 'src/config/pages-config';
+import { SpinnerService } from '../shared/components/spinner/spinner.service';
 
 
 @Component({
@@ -22,7 +23,6 @@ export class SearchComponent implements OnInit {
 
   private profiles: any;
   private dataSource = new MatTableDataSource<any>([]);
-  private isLoading: boolean;
   private tableColumns: string[] = PROFILE_TABLE_COLUMN
   private paginator: MatPaginator;
   private sort: MatSort;
@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  constructor(private profileService: ProfileService, private router: Router) { }
+  constructor(private profileService: ProfileService, private router: Router, public spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.getProfiles();
@@ -54,12 +54,10 @@ export class SearchComponent implements OnInit {
 
   getProfiles() {
     if (!this.profileService.profiles) {
-      this.isLoading = true;
       return this.profileService.getProfiles().subscribe((data: any[]) => {
         this.profiles = data;
         this.dataSource = new MatTableDataSource(this.profiles);
         this.profileService.profiles = this.profiles;
-        this.isLoading = false;
       });
     } else {
       this.profiles = this.profileService.profiles;
