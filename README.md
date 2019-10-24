@@ -49,8 +49,7 @@ Applying lazy loading—a design pattern that loads NgModules as needed. Lazy lo
   **activit-timeline-tab.component.ts** --> Child component for 'Activity Timeline' tab
   
 ### Shared Components
-   **header.component.ts** 
-   **footer.component.ts** --> empty component in case we need to add footer
+   **header.component.ts** --> App header component
    **side-bar.component.ts** --> empty component in case we need to add sidebar
    **notification-message.component** --> Generic component to display message to use, for example, when no data displayed in table
    **spinner.component** --> Generic component to display/hide spinner automatically if need HTTP request triggered
