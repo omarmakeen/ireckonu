@@ -4,36 +4,6 @@
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 ## Project Structure
 
-├───app
-│   ├───profile-details
-│   │   ├───activity-timeline-tab
-│   │   ├───details-tab
-│   │   ├───profile-id-tab
-│   │   └───quick-facts
-│   ├───profile-search
-│   └───shared
-│       ├───components
-│       │   ├───card
-│       │   ├───error-dialog
-│       │   ├───header
-│       │   ├───notification-message
-│       │   ├───search-bar
-│       │   ├───side-bar
-│       │   └───spinner
-│       ├───constants
-│       ├───models
-│       ├───pipes
-│       │   ├───empty
-│       │   └───telephone-code
-│       ├───services
-│       │   ├───interceptors
-│       │   └───profile-service
-│       └───utils
-├───assets
-│   └───i18n
-├───config
-└───environments
-
 ### Modules
 Applying lazy loading—a design pattern that loads NgModules as needed. Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.
  - app.module.ts
