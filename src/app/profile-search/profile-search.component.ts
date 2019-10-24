@@ -7,11 +7,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TranslateService } from '@ngx-translate/core';
-import { ProfileService } from './profile.service';
 import { Router } from '@angular/router';
 import { PAGE_SIZE_OPTIONS, PROFILE_TABLE_COLUMN } from 'src/app/shared/constants/defines';
 import { config } from 'src/config/pages-config';
 import { SpinnerService } from '../shared/components/spinner/spinner.service';
+import { ProfileService } from '../shared/services/profile-service/profile.service';
+import { Profile } from '../shared/models/profile.model';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
   private tableColumns: string[] = PROFILE_TABLE_COLUMN
   private paginator: MatPaginator;
   private sort: MatSort;
+  private isLoading: boolean;
   pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
@@ -54,10 +56,12 @@ export class SearchComponent implements OnInit {
 
   getProfiles() {
     if (!this.profileService.profiles) {
-      return this.profileService.getProfiles().subscribe((data: any[]) => {
+      this.isLoading = true;
+      return this.profileService.getProfiles().subscribe((data: Profile[]) => {
         this.profiles = data;
         this.dataSource = new MatTableDataSource(this.profiles);
         this.profileService.profiles = this.profiles;
+        this.isLoading = false;
       });
     } else {
       this.profiles = this.profileService.profiles;

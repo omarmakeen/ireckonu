@@ -23,7 +23,7 @@ export const config = {
     profileDetails: {
         name: 'profile-details',
         route: '/profile-details',
-        titleKey: 'Profile Details',
+        // titleKey: 'Profile Details',
         showHeader: true,
         showSidebar: false
     }

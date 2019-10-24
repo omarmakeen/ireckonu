@@ -9,7 +9,7 @@ export class DetailsTabComponent implements OnInit {
 
 
   @Input()
-  profileDetails
+  profileDetails: any
 
   constructor() { }
 

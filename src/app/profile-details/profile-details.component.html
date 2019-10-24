@@ -16,3 +16,9 @@
             </ng-template>
         </mat-tab>
 </mat-tab-group>
+
+<div *ngIf="profile" class="profile-header">
+    <div><h1>Profile:</h1></div>
+    <div ><img class="profile-img" [src]="profile.photo"></div>
+    <div><h1>{{profile.first_name}} {{profile.last_name}}</h1></div>
+</div>

@@ -17,7 +17,7 @@ import { CardComponent } from './components/card/card.component';
 import { TelephoneCodePipe } from './pipes/telephone-code/telephone-code.pipe';
 import { EmptyPipe } from './pipes/empty/empty.pipe';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { ProfileService } from '../profile-search/profile.service';
+import { ProfileService } from './services/profile-service/profile.service';
 
 @NgModule({
   declarations: [HeaderComponent, SearchBarComponent, NotificationMessageComponent, ErrorDialogComponent, SpinnerComponent, CardComponent, TelephoneCodePipe, EmptyPipe, SideBarComponent],
@@ -57,6 +57,7 @@ import { ProfileService } from '../profile-search/profile.service';
     MatGridListModule,
     TranslateModule 
   ],
+  providers: [ProfileService],
   entryComponents: [ErrorDialogComponent]
 })
 export class SharedModule { }

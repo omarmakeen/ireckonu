@@ -11,3 +11,10 @@ export const DATES = {
 export const PAGE_SIZE_OPTIONS = [10, 50, 100];
 
 export const PROFILE_TABLE_COLUMN = ['photo', 'localid', 'email', 'name', 'phone', 'address', 'modified', 'view']
+
+export const SPINNER_CONFIG = {
+    COLOR: 'primary',
+    MODE: 'indeterminate',
+    VALUE: 50,
+
+}
