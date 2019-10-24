@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchComponent } from 'src/app/profile/search/search.component';
 import { SearchBarService } from './search-bar.service';
 
 @Component({

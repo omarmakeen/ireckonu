@@ -17,7 +17,7 @@
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>{{'searchPage.tableHeader.name' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                {{element.first_name + ' ' + element.last_name | personalTitle: element.gender}}</mat-cell>
+                {{element.first_name + ' ' + element.last_name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="phone">
             <mat-header-cell *matHeaderCellDef mat-sort-header>{{'searchPage.tableHeader.phone' | translate}}</mat-header-cell>
@@ -33,7 +33,7 @@
         </ng-container>
         <ng-container matColumnDef="view">
             <mat-header-cell *matHeaderCellDef>{{'searchPage.tableHeader.view' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let element"><span>></span></mat-cell>
+            <mat-cell *matCellDef="let element"><i class="material-icons">keyboard_arrow_right</i></mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: tableColumns" (click)=openProfile(row)></mat-row>

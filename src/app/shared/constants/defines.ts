@@ -1,6 +1,6 @@
 export const WORDING_FILES = {
     defaultWording: 'defaultWording',
-    deWording: 'deWording'
+    enWording: 'enWording'
 };
 
 export const DATES = {

@@ -8,6 +8,6 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ErrorDialogComponent  {
 
-  title = 'Angular-Interceptor';
+  title = 'Error!';
   constructor(@Inject(MAT_DIALOG_DATA) public data: string) {}
 }

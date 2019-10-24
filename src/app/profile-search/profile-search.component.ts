@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TranslateService } from '@ngx-translate/core';
-import { ProfileService } from '../profile.service';
+import { ProfileService } from './profile.service';
 import { Router } from '@angular/router';
 import { PAGE_SIZE_OPTIONS, PROFILE_TABLE_COLUMN } from 'src/app/shared/constants/defines';
 import { config } from 'src/config/pages-config';
@@ -15,8 +15,8 @@ import { config } from 'src/config/pages-config';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.sass']
+  templateUrl: './profile-search.component.html',
+  styleUrls: ['./profile-search.component.sass']
 })
 export class SearchComponent implements OnInit {
 
@@ -46,27 +46,25 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  constructor(private httpClient: HttpClient, private profileService: ProfileService, private router: Router) { }
+  constructor(private profileService: ProfileService, private router: Router) { }
 
   ngOnInit() {
     this.getProfiles();
   }
 
   getProfiles() {
-    this.isLoading = true;
-    return this.profileService.getProfiles().subscribe((data: any[]) => {
-      console.log(data);
-      this.profiles = data;
-      this.isLoading = false;
+    if (!this.profileService.profiles) {
+      this.isLoading = true;
+      return this.profileService.getProfiles().subscribe((data: any[]) => {
+        this.profiles = data;
+        this.dataSource = new MatTableDataSource(this.profiles);
+        this.profileService.profiles = this.profiles;
+        this.isLoading = false;
+      });
+    } else {
+      this.profiles = this.profileService.profiles;
       this.dataSource = new MatTableDataSource(this.profiles);
-    });
-
-    // return this.httpClient.get('https://httpstat.us/400').subscribe((data: any[]) => {
-    //   console.log(data);
-    //   this.profiles = data;
-    //   this.isLoading = false;
-    //   this.dataSource = new MatTableDataSource(this.profiles);
-    // });
+    }
   }
 
   getSearchText(text: string) {
@@ -79,8 +77,7 @@ export class SearchComponent implements OnInit {
   }
 
   openProfile(profile: any) {
-    this.profileService.currentProfile = profile;
-    this.router.navigate([config.profile.details.route]);
+    this.router.navigate([config.profileDetails.route], { state: { profile: profile } });
   }
 
 }

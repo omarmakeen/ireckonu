@@ -13,15 +13,18 @@ export const config = {
             mobileBtnLabelKey: 'common.buttons.cancel.std-headline'
         }
     },
-    profile: {
+    profileSearch: {
         name: 'profile',
         route: '/profile',
-        titleKey: 'Profiles',
-
-        details: {
-            name: 'profile-details',
-            route: '/profile/details',
-            titleKey: 'Profile Details'
-        }
+        titleKey: 'searchPage.header.title',
+        showHeader: true,
+        showSidebar: false
+    },
+    profileDetails: {
+        name: 'profile-details',
+        route: '/profile-details',
+        titleKey: 'Profile Details',
+        showHeader: true,
+        showSidebar: false
     }
 }

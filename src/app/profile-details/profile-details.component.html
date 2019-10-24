@@ -1,16 +1,16 @@
 <app-quick-facts class="quick-fact"></app-quick-facts>
 <mat-tab-group class="tabs">
-    <mat-tab label="Profile Details">
+    <mat-tab [label]="'profileDetails.tabs.tab1' | translate">
         <ng-template matTabContent>
-            <app-details-tab></app-details-tab>
+            <app-details-tab [profileDetails]="tableData"></app-details-tab>
         </ng-template>
     </mat-tab>
-    <mat-tab label="Profile ID's">
+    <mat-tab [label]="'profileDetails.tabs.tab2' | translate">
         <ng-template matTabContent>
             <app-profile-id-tab></app-profile-id-tab>
         </ng-template>
     </mat-tab>
-    <mat-tab label="Activity Timeline">
+    <mat-tab [label]="'profileDetails.tabs.tab3' | translate">
             <ng-template matTabContent>
                 <app-activity-timeline-tab></app-activity-timeline-tab>
             </ng-template>

@@ -5,13 +5,20 @@ import { config } from '../config/pages-config';
 
 const routes: Routes = [    {
   path: '',
-  redirectTo: config.profile.route,
+  redirectTo: config.profileSearch.route,
   pathMatch: 'full'
 },
 {
   //  profiles page
-  path: config.profile.name,
-  loadChildren: './profile/profile.module#ProfileModule'
+  path: config.profileSearch.name,
+  loadChildren: './profile-search/profile-search.module#ProfileSearchModule',
+  data:  config.profileSearch 
+},
+{
+  //  profiles page
+  path: config.profileDetails.name,
+  loadChildren: './profile-details/profile-details.module#ProfileDetailsModule',
+  data: config.profileDetails
 }];
 
 @NgModule({

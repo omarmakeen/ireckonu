@@ -1,6 +1,9 @@
 {
     "searchPage": {
-        "tableHeader":{
+        "header": {
+            "title": "Profile"
+        },
+        "tableHeader": {
             "id": "Local ID",
             "email": "Email Address",
             "name": "Name",
@@ -12,6 +15,34 @@
         "notification": {
             "message": "No profile found"
         }
+    },
+    "profileDetails": {
+        "header": {
+            "title": "Profile Details"
+        },
+        "tabs": {
+            "tab1": "Profile Details",
+            "tab2": "Profile ID's",
+            "tab3": "Activity Timeline"
+        },
+        "DetailsTab": {
+            "card": {
+                "title": "Profile Details"
+            },
+            "profileTableHeader": {
+                "prefix": "Prefix",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "suffix": "Suffix",
+                "loyaltyMemberId": "Loyalty Member ID",
+                "phone": "Phone",
+                "address": "Address",
+                "birthdate": "Birthdate",
+                "language": "Language"
+            }
+        }
+    },
+    "searchBar": {
+        "placeholder": "Search Profiles"
     }
-    
 }

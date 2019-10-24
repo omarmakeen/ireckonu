@@ -45,8 +45,8 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             catchError((error: HttpErrorResponse) => {
                 let data = {};
                 data = {
-                    reason: error ? error.message : '',
-                    status: error.status
+                    reason: error ? error.message : 'Internal Server Error.',
+                    status: error ? error.status : 'Unknown Error Code.'
                 };
                 this.errorDialogService.openDialog(data);
                 return throwError(error);

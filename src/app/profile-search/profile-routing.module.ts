@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SearchComponent } from './search/search.component';
-import { SharedModule } from '../shared/shared.module';
-import { DetailsComponent } from './details/details.component';
+import { SearchComponent } from './profile-search.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: SearchComponent
-  },
-  {
-    path: 'details',
-    component: DetailsComponent
   }
 ];
 

@@ -7,17 +7,20 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
-import { PersonalTitlePipe } from './pipes/personal-title/personal-title.pipe';
 import { NotificationMessageComponent } from './components/notification-message/notification-message.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialogModule, MatTabsModule, MatIconModule, MatGridListModule } from '@angular/material';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-
+import { CardComponent } from './components/card/card.component';
+import { TelephoneCodePipe } from './pipes/telephone-code/telephone-code.pipe';
+import { EmptyPipe } from './pipes/empty/empty.pipe';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { ProfileService } from '../profile-search/profile.service';
 
 @NgModule({
-  declarations: [HeaderComponent, SearchBarComponent, PersonalTitlePipe, NotificationMessageComponent, ErrorDialogComponent, SpinnerComponent],
+  declarations: [HeaderComponent, SearchBarComponent, NotificationMessageComponent, ErrorDialogComponent, SpinnerComponent, CardComponent, TelephoneCodePipe, EmptyPipe, SideBarComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,10 +38,13 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   ],
   exports: [
     HeaderComponent,
+    SideBarComponent,
     SpinnerComponent,
     SearchBarComponent,
     NotificationMessageComponent,
-    PersonalTitlePipe,
+    CardComponent,
+    TelephoneCodePipe,
+    EmptyPipe,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,

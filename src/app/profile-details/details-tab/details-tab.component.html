@@ -1,0 +1,9 @@
+<app-card [title]="'profileDetails.DetailsTab.card.title' | translate">
+    <table class="table">
+        <tr *ngFor="let data of profileDetails">
+            <td>{{data.header}}</td>
+            <td>{{data.value === undefined ? (data.value | empty) : data.header === ('profileDetails.DetailsTab.profileTableHeader.phone' | translate) ? (data.value | telephoneCode) : data.value | empty }}</td>
+            <td><i class="material-icons">edit</i></td>
+        </tr>
+    </table>
+</app-card>
