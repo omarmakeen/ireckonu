@@ -1,5 +1,5 @@
-<form>
-    <input #search class="search-input" type="text" [placeholder]="'searchBar.placeholder' | translate" aria-label="Search">
-    <button mdbBtn size="sm" color="elegant" rounded="true" class="search-button" mdbWavesEffect type="submit"
+<div class="search-bar">
+    <input #search class="search-bar__input" type="text" [placeholder]="'searchBar.placeholder' | translate" aria-label="Search">
+    <button mdbBtn class="search-bar__button" size="sm" color="elegant" rounded="true"  mdbWavesEffect type="submit"
         (click)='searchClick(search.value)'><i class="material-icons">search</i></button>
-</form>
+</div>
