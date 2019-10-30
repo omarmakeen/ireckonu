@@ -57,7 +57,7 @@ import { ProfileService } from './services/profile-service/profile.service';
     MatGridListModule,
     TranslateModule 
   ],
-  providers: [ProfileService],
+  providers: [],
   entryComponents: [ErrorDialogComponent]
 })
 export class SharedModule { }

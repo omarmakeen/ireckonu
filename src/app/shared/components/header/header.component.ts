@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { config } from 'src/config/pages-config';
+import { ProfileService } from '../../services/profile-service/profile.service';
 
 
 
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   title: string;
 
-  constructor(translate: TranslateService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(translate: TranslateService, private router: Router, private activatedRoute: ActivatedRoute, private profileService: ProfileService) { }
 
   ngOnInit() {
     this.title = config.profileSearch.titleKey;

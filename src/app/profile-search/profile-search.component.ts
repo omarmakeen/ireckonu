@@ -54,13 +54,29 @@ export class SearchComponent implements OnInit {
     this.getProfiles();
   }
 
+  // getProfiles() {
+  //   if (!this.profileService.profiles) {
+  //     this.isLoading = true;
+  //     return this.profileService.getProfiles().subscribe((data: Profile[]) => {
+  //       this.profiles = data;
+  //       this.dataSource = new MatTableDataSource(this.profiles);
+  //       this.profileService.profiles = this.profiles;
+  //       this.isLoading = false;
+  //     });
+  //   } else {
+  //     this.profiles = this.profileService.profiles;
+  //     this.dataSource = new MatTableDataSource(this.profiles);
+  //   }
+  // }
+
+
   getProfiles() {
     if (!this.profileService.profiles) {
       this.isLoading = true;
       return this.profileService.getProfiles().subscribe((data: Profile[]) => {
         this.profiles = data;
         this.dataSource = new MatTableDataSource(this.profiles);
-        this.profileService.profiles = this.profiles;
+        // this.profileService.profiles = this.profiles;
         this.isLoading = false;
       });
     } else {
@@ -68,9 +84,9 @@ export class SearchComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.profiles);
     }
   }
+  
 
   getSearchText(text: string) {
-    console.log(text);
     this.applyFilter(text);
   }
 
@@ -79,6 +95,7 @@ export class SearchComponent implements OnInit {
   }
 
   openProfile(profile: any) {
+    this.profileService.currentProfile = profile;
     this.router.navigate([config.profileDetails.route], { state: { profile: profile } });
   }
 

@@ -15,6 +15,11 @@ export const PROFILE_TABLE_COLUMN = ['photo', 'localid', 'email', 'name', 'phone
 export const SPINNER_CONFIG = {
     COLOR: 'primary',
     MODE: 'indeterminate',
-    VALUE: 50,
+    VALUE: 50
 
-}
+};
+
+export const INTERCEPTOR = {
+        SKIP_SPINNER: 'skip-spinner',
+        SKIP_ERROR: 'skip-error'
+};
