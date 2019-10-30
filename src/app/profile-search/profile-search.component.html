@@ -41,7 +41,7 @@
         <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: tableColumns" (click)=openProfile(row)></mat-row>
     </mat-table>
-    <app-notification-message class="notification" [message]="'searchPage.notification.message' | translate"
+    <app-notification-message [alert]="'searchPage.notification.noDataFound.alert' | translate" [title]="'searchPage.notification.noDataFound.title' | translate" [message]="'searchPage.notification.noDataFound.message' | translate"
         *ngIf="dataSource.filteredData.length === 0 && !isLoading"></app-notification-message>
     <mat-paginator class="table-pagination" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
         *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length > 0"></mat-paginator>

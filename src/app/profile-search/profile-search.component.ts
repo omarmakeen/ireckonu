@@ -78,13 +78,15 @@ export class SearchComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.profiles);
         // this.profileService.profiles = this.profiles;
         this.isLoading = false;
+      }, errer => {
+        console.log('error: ', errer);
       });
     } else {
       this.profiles = this.profileService.profiles;
       this.dataSource = new MatTableDataSource(this.profiles);
     }
   }
-  
+
 
   getSearchText(text: string) {
     this.applyFilter(text);

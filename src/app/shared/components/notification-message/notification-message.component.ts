@@ -8,11 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NotificationMessageComponent implements OnInit {
 
   @Input()
+  title: String;
+
+  @Input()
   message: String;
+
+  @Input()
+  alert: String;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.alert);
+    console.log(this.message);
   }
 
 }

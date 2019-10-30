@@ -3,8 +3,8 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { API_URLS } from '../../constants/routes-config';
 import { Profile } from '../../models/profile.model';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 import { INTERCEPTOR } from '../../constants/defines';
 
 
@@ -25,11 +25,23 @@ export class ProfileService {
     // const headers = new HttpHeaders ({
     //   'skip-spinner': '',
     // });
-  
+
     return this.httpClient.get(API_URLS.PROFILE.GET_PROFILES, { headers: headers }).pipe(map((response: any) => {
       this.profiles = response;
       return response;
-    }));
+    }), catchError(this.handleError));
+  }
+
+  handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
 
   getProfileDetails(profile: Profile) {
