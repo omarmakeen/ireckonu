@@ -1,0 +1,8 @@
+<table class="table">
+    <tr *ngFor="let item of items">
+        <td>{{item.header}}</td>
+        <td>{{item.value | dynamicPipe:item.filter }}
+        </td>
+        <td><i class="material-icons">edit</i></td>
+    </tr>
+</table>
