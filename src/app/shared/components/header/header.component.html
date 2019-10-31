@@ -1,6 +1,6 @@
 <div class="header">
     <h1>{{title | translate}}</h1>
-    <ul class="header__profile">
+    <ul *ngIf="profileInfo | async" class="header__profile">
         <li>
             <h1>Profiles:</h1>
         </li>

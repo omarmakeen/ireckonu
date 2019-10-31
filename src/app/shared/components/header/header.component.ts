@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { config } from 'src/config/pages-config';
 import { ProfileService } from '../../services/profile-service/profile.service';
+import { Subject } from 'rxjs/internal/Subject';
 
 
 
@@ -14,6 +15,15 @@ import { ProfileService } from '../../services/profile-service/profile.service';
 export class HeaderComponent implements OnInit {
 
   title: string;
+  profileInfo = new Subject<boolean>();
+
+  show() {
+    this.profileInfo.next(true);
+  }
+
+  hide() {
+    this.profileInfo.next(false);
+  }
 
   constructor(translate: TranslateService, private router: Router, private activatedRoute: ActivatedRoute, private profileService: ProfileService) { }
 
@@ -22,6 +32,11 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.title = this.activatedRoute.firstChild.snapshot.data.titleKey;
+        if(this.router.url === config.profileDetails.route){
+          this.show();
+        } else{
+          this.hide();
+        }
       }
     });
   }

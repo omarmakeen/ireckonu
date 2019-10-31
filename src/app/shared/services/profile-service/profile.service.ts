@@ -20,8 +20,8 @@ export class ProfileService {
   getProfiles(): Observable<Profile[]> {
 
     let headers = new HttpHeaders();
-    headers = headers.set(INTERCEPTOR.SKIP_SPINNER, '');
-    headers = headers.set(INTERCEPTOR.SKIP_ERROR, '');
+    // headers = headers.set(INTERCEPTOR.SKIP_SPINNER, '');
+    // headers = headers.set(INTERCEPTOR.SKIP_ERROR, '');
     // const headers = new HttpHeaders ({
     //   'skip-spinner': '',
     // });

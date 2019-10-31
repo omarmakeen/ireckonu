@@ -15,7 +15,7 @@ export class SearchBarComponent implements OnDestroy  {
   @Output() searchText: EventEmitter<string> = new EventEmitter<string>()
 
   constructor() {
-    const subscription = this.keyUp.pipe(
+    this.subscription = this.keyUp.pipe(
       map(event => event.target.value),
       debounceTime(1000),
       distinctUntilChanged(),

@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   private tableColumns: string[] = PROFILE_TABLE_COLUMN
   private paginator: MatPaginator;
   private sort: MatSort;
-  private isLoading: boolean;
+  private loaded: boolean;
   pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
@@ -72,12 +72,11 @@ export class SearchComponent implements OnInit {
 
   getProfiles() {
     if (!this.profileService.profiles) {
-      this.isLoading = true;
       return this.profileService.getProfiles().subscribe((data: Profile[]) => {
         this.profiles = data;
         this.dataSource = new MatTableDataSource(this.profiles);
         // this.profileService.profiles = this.profiles;
-        this.isLoading = false;
+        this.loaded = true;
       }, errer => {
         console.log('error: ', errer);
       });
@@ -103,10 +102,10 @@ export class SearchComponent implements OnInit {
 
 }
 
-export class ProfilesDataSource extends DataSource<any> {
-  constructor(private profiles: any) { super() }
-  connect(): Observable<any[]> {
-    return of(this.profiles);
-  }
-  disconnect() { }
-}
+// export class ProfilesDataSource extends DataSource<any> {
+//   constructor(private profiles: any) { super() }
+//   connect(): Observable<any[]> {
+//     return of(this.profiles);
+//   }
+//   disconnect() { }
+// }
