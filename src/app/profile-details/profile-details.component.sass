@@ -1,31 +1,41 @@
-.tabs
-    position: absolute
-    width: calc(100% - 300px)
-    top: 95px
-    left: 300px
+@import '../../variables'
 
-.quick-fact
-    position: absolute
-    top: 110px
-    left: 35px
-    width: 250px
+.profile-details 
+    display: flex
 
-.profile-header
-    position: absolute
-    top: 1px
-    left: 31px
-    div
-        display: inline-block
-        margin-right: 15px
-    h1
-        color: white
-        font-family: sans-serif
-        font-size: 36px
+.profile-details__quick-facts-container
+    flex: 1
+    display flex
 
-.profile-img
-  object-fit: cover
-  border-radius: 50%
-  width: 40px
-  height: 40px
-  background: #cfc5c5
-  vertical-align: bottom
+.sub-header__quick-facts
+    background-color: $header-color
+    height: $header-height
+    display: flex
+    flex-direction: row-reverse
+
+
+.profile-details__tabs-container
+    flex: 4
+    display flex
+
+.sub-header__tabs
+    background-color: $header-color
+    height: $header-height
+    display: flex
+   
+
+.profile-details__tabs
+    flex: 1
+    display: block
+
+.quick-facts
+    flex: 1
+    margin-left: 1rem
+    
+
+::ng-deep .mat-tab-label
+    color: white
+
+
+
+

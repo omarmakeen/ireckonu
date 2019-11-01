@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   private tableColumns: string[] = PROFILE_TABLE_COLUMN
   private paginator: MatPaginator;
   private sort: MatSort;
-  private isLoading: boolean;
+  private loaded: boolean;
   pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
@@ -54,14 +54,31 @@ export class SearchComponent implements OnInit {
     this.getProfiles();
   }
 
+  // getProfiles() {
+  //   if (!this.profileService.profiles) {
+  //     this.isLoading = true;
+  //     return this.profileService.getProfiles().subscribe((data: Profile[]) => {
+  //       this.profiles = data;
+  //       this.dataSource = new MatTableDataSource(this.profiles);
+  //       this.profileService.profiles = this.profiles;
+  //       this.isLoading = false;
+  //     });
+  //   } else {
+  //     this.profiles = this.profileService.profiles;
+  //     this.dataSource = new MatTableDataSource(this.profiles);
+  //   }
+  // }
+
+
   getProfiles() {
     if (!this.profileService.profiles) {
-      this.isLoading = true;
       return this.profileService.getProfiles().subscribe((data: Profile[]) => {
         this.profiles = data;
         this.dataSource = new MatTableDataSource(this.profiles);
-        this.profileService.profiles = this.profiles;
-        this.isLoading = false;
+        // this.profileService.profiles = this.profiles;
+        this.loaded = true;
+      }, errer => {
+        console.log('error: ', errer);
       });
     } else {
       this.profiles = this.profileService.profiles;
@@ -69,8 +86,8 @@ export class SearchComponent implements OnInit {
     }
   }
 
+
   getSearchText(text: string) {
-    console.log(text);
     this.applyFilter(text);
   }
 
@@ -79,15 +96,16 @@ export class SearchComponent implements OnInit {
   }
 
   openProfile(profile: any) {
+    this.profileService.currentProfile = profile;
     this.router.navigate([config.profileDetails.route], { state: { profile: profile } });
   }
 
 }
 
-export class ProfilesDataSource extends DataSource<any> {
-  constructor(private profiles: any) { super() }
-  connect(): Observable<any[]> {
-    return of(this.profiles);
-  }
-  disconnect() { }
-}
+// export class ProfilesDataSource extends DataSource<any> {
+//   constructor(private profiles: any) { super() }
+//   connect(): Observable<any[]> {
+//     return of(this.profiles);
+//   }
+//   disconnect() { }
+// }

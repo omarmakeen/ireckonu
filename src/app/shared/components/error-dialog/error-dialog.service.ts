@@ -5,8 +5,11 @@ import { ErrorDialogComponent } from './error-dialog.component';
 
 @Injectable()
 export class ErrorDialogService {
+
   public isDialogOpen: Boolean = false;
+
   constructor(public dialog: MatDialog) { }
+
   openDialog(data): any {
     if (this.isDialogOpen) {
       return false;
@@ -16,11 +19,6 @@ export class ErrorDialogService {
       width: '300px',
       data: data
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.isDialogOpen = false;
-      let animal;
-      animal = result;
-    });
   }
+  
 }

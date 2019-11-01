@@ -1,19 +1,30 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchBarService } from './search-bar.service';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Subject, of, Subscription } from 'rxjs';
+import { map, debounceTime, distinctUntilChanged, flatMap, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.sass'],
-  providers: [SearchBarService]
+  styleUrls: ['./search-bar.component.sass']
 })
-export class SearchBarComponent implements OnInit {
-  
+export class SearchBarComponent implements OnDestroy  {
+
+  private subscription: Subscription;
+  public keyUp = new Subject<any>();
+
   @Output() searchText: EventEmitter<string> = new EventEmitter<string>()
 
-  constructor(private searchBarService: SearchBarService) { }
+  constructor() {
+    this.subscription = this.keyUp.pipe(
+      map(event => event.target.value),
+      debounceTime(1000),
+      distinctUntilChanged(),
+      flatMap(search => of(search).pipe(delay(500)))
+    ).subscribe(search => this.searchClick(search));
+  }
 
-  ngOnInit() {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   searchClick(text: string) {

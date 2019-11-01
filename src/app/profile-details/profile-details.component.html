@@ -1,4 +1,34 @@
-<app-quick-facts class="quick-fact"></app-quick-facts>
+<div class="profile-details">
+    <div class="profile-details__quick-facts-container">
+        <div class="sub-header__quick-facts">
+                <app-quick-facts class="quick-facts"></app-quick-facts>
+        </div>
+
+    </div>
+    <div class="profile-details__tabs-container">
+        <div class="sub-header__tabs">
+            <mat-tab-group mat-stretch-tabs class="profile-details__tabs">
+                <mat-tab [label]="'profileDetails.tabs.tab1' | translate">
+                    <ng-template matTabContent>
+                        <app-details-tab [profileDetails]="tableData"></app-details-tab>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab [label]="'profileDetails.tabs.tab2' | translate">
+                    <ng-template matTabContent>
+                        <app-profile-id-tab></app-profile-id-tab>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab [label]="'profileDetails.tabs.tab3' | translate">
+                    <ng-template matTabContent>
+                        <app-activity-timeline-tab></app-activity-timeline-tab>
+                    </ng-template>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+
+<!-- <app-quick-facts class="quick-fact"></app-quick-facts>
 <mat-tab-group class="tabs">
     <mat-tab [label]="'profileDetails.tabs.tab1' | translate">
         <ng-template matTabContent>
@@ -21,4 +51,4 @@
     <div><h1>Profile:</h1></div>
     <div ><img class="profile-img" [src]="profile.photo"></div>
     <div><h1>{{profile.first_name}} {{profile.last_name}}</h1></div>
-</div>
+</div> -->

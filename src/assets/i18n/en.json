@@ -1,7 +1,7 @@
 {
     "searchPage": {
         "header": {
-            "title": "Profile"
+            "title": "Profiles"
         },
         "tableHeader": {
             "id": "Local ID",
@@ -13,7 +13,11 @@
             "view": "View"
         },
         "notification": {
-            "message": "No profile found"
+            "noDataFound": {
+                "title": "Opps, error occured",
+                "message": "No profile found",
+                "alert": "important"
+            }
         }
     },
     "profileDetails": {
