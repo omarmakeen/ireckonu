@@ -16,6 +16,9 @@ import { INTERCEPTOR } from '../../constants/defines';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
+
+    private skipErrorDialog: boolean;
+
     constructor(public errorDialogService: ErrorDialogService, public spinnerService: SpinnerService) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -24,7 +27,10 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             this.spinnerService.show();
         }
 
-        // this.spinnerService.show();
+        if (request.headers.has(INTERCEPTOR.SKIP_ERROR)) {
+
+            this.skipErrorDialog = true;
+        }
 
         const token: string = localStorage.getItem('token');
 
@@ -54,12 +60,15 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 return event;
             }),
             catchError((error: HttpErrorResponse) => {
-                let data = {};
-                data = {
-                    reason: error ? error.message : 'Internal Server Error.',
-                    status: error ? error.status : 'Unknown Error Code.'
-                };
-                this.errorDialogService.openDialog(data);
+
+                if (!this.skipErrorDialog) {
+                    let data = {};
+                    data = {
+                        reason: error ? error.message : 'Internal Server Error.',
+                        status: error ? error.status : 'Unknown Error Code.'
+                    };
+                    this.errorDialogService.openDialog(data);
+                }
                 return throwError(error);
             }), finalize(() => this.spinnerService.hide()));
     }

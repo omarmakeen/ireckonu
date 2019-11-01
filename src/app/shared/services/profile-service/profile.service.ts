@@ -22,9 +22,6 @@ export class ProfileService {
     let headers = new HttpHeaders();
     // headers = headers.set(INTERCEPTOR.SKIP_SPINNER, '');
     // headers = headers.set(INTERCEPTOR.SKIP_ERROR, '');
-    // const headers = new HttpHeaders ({
-    //   'skip-spinner': '',
-    // });
 
     return this.httpClient.get(API_URLS.PROFILE.GET_PROFILES, { headers: headers }).pipe(map((response: any) => {
       this.profiles = response;
@@ -35,10 +32,8 @@ export class ProfileService {
   handleError(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // client-side error
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
